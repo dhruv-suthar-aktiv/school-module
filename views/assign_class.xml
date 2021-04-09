@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Tree view of extra class -->
+        <record id="extra_class_tree_view" model="ir.ui.view">
+            <field name="name">extra.class.tree.view</field>
+            <field name="model">assign.class</field>
+            <field name="arch" type="xml">
+                <tree string="Extra classes">
+                    <field name="professor_id"/>
+                    <field name="subject_id"/>
+                    <field name="subject_code"/>
+                    <field name="class_date"/>
+                </tree>
+            </field>
+        </record>
+        <!-- Menu action -->
+        <record id="extra_class_menu_action" model="ir.actions.act_window">
+            <field name="name">Extra Classes</field>
+            <field name="res_model">assign.class</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Assign Extra Classes</p>
+            </field>
+        </record>
+        <!-- Menu item for extra class -->
+        <menuitem id="school_menu" name="School"/>
+        <menuitem action="extra_class_menu_action" id="school_extra_class_menu" name="Extra Classes" parent="school_menu"/>
+    </data>
+</odoo>

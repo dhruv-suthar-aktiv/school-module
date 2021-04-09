@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="project_project_inherit" model="ir.ui.view">
+            <field name="name">Project inherit</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <!-- <field name='user_id' position='after'><field name="create_date"/><field name="end_date"/><field name="no_of_days"/></field>-->
+                <!-- <xpath expr="//field[@name='user_id']" position="after"><field name="create_date"/><field name="end_date"/><field name="no_of_days"/></xpath>-->
+                <xpath expr="//div[@name='options_active']" position="replace">
+                    <div name="edited">
+                        <div>
+                            <label class="oe_inline" for="label_tasks" string="Name of the tasks :"/>
+                            <field class="oe_inline oe_input_align" name="label_tasks"/>
+                        </div>
+                        <div>
+                            <label class="oe_inline" for="create_date" string="Create Date:"/>
+                            <field class="oe_inline oe_input_align" name="create_date" readonly="1" widget="date"/>
+                        </div>
+                        <div>
+                            <label class="oe_inline" for="end_date" string="End Date: "/>
+                            <field class="oe_inline oe_input_align" name="end_date" widget="date"/>
+                        </div>
+                        <div>
+                            <label class="oe_inline" for="no_of_days" string="No of days: "/>
+                            <field class="oe_inline oe_input_align" name="no_of_days" readonly="1"/>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+        <record id="project_menu_action" model="ir.actions.act_window">
+            <field name="name">Project</field>
+            <field name="res_model">project.project</field>
+            <field name="view_mode">form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the project</p>
+            </field>
+        </record>
+        <menuitem id="school_menu" name="School"/>
+        <menuitem action="project_menu_action" id="school_sale_order_menu" name="Project" parent="school_menu"/>
+    </data>
+</odoo>

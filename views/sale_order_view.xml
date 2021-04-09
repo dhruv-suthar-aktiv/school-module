@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']//tree//field[@name='product_uom_qty']" position="after">
+                <field name="student_id"/>
+                <field name="professor_ids" widget="many2many_tags"/>
+            </xpath>
+           <xpath expr="//field[@name='order_line']//form//field[@name='product_id']"
+            position="after">
+                <field name="student_id" attrs="{'readonly': [('state', '=', 'sale')]}" />
+           </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="after">
+                <field name="student_id"/>
+                <field name="professor_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="stock_picking_view_form_1" model="ir.ui.view">
+        <field name="name">stock.picking.view.form.1</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='move_ids_without_package']//tree//field[@name='product_uom_qty']" position="before">
+                <field name="student_id" />
+                <field name="professor_ids" widget="many2many_tags"/>
+            </xpath>
+            <xpath expr="//field[@name='move_ids_without_package']//form//field[@name='product_id']"
+            position="after">
+                <field name="student_id" />
+                <field name="professor_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

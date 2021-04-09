@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="partner_student" model="res.partner">
+            <field name="name">Pierra Aubameyang</field>
+            <field name="company_name">Arsenal FC</field>
+            <field name="street">404 Not found</field>
+            <field name="city">London</field>
+            <field name="zip">11515</field>
+            <field name="country_id" ref="base.uk"/>
+            <field name="state_id" ref="base.state_us_39"/>
+            <field name="phone">+1 999-555-5555</field>
+            <field name="email">aubameyang@gmail.com</field>
+            <field name="tz">Europe/Brussels</field>
+        </record>
+
+        <record id="partner_professor" model="res.partner">
+            <field name="name">Arsene Wenger</field>
+            <field name="company_name">Arsenal FC</field>
+            <field name="street">404 Not found</field>
+            <field name="city">London</field>
+            <field name="zip">11515</field>
+            <field name="country_id" ref="base.uk"/>
+            <field name="state_id" ref="base.state_us_39"/>
+            <field name="phone">+1 555-555-5555</field>
+            <field name="email">arsene@gmail.com</field>
+            <field name="tz">Europe/Brussels</field>
+        </record>
+
+         <record id="partner_principal" model="res.partner">
+            <field name="name"> Peter Hill-Wood</field>
+            <field name="company_name">Arsenal FC</field>
+            <field name="street">404 Not found</field>
+            <field name="city">London</field>
+            <field name="zip">11515</field>
+            <field name="country_id" ref="base.uk"/>
+            <field name="state_id" ref="base.state_us_39"/>
+            <field name="phone">+1 666-555-5555</field>
+            <field name="email">peter@gmail.com</field>
+            <field name="tz">Europe/Brussels</field>
+        </record>
+    </data>
+</odoo>

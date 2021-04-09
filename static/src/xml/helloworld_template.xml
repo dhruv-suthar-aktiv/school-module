@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template xml:space="preserve">
+    <t t-name="HelloWorldTemplate">
+
+        <div class="jumbotron text-center">
+            <div class="container text-center">
+                <h1>Students</h1>
+                <a class="fa fa-7x button_clickable fa-sign-in btn-secondary" aria-label="Sign in" title="Sign in"/>
+                <h3 class="mt0 mb0 text-muted">Click to
+                    <b>view student's info</b>
+                </h3>
+                <p>Welcome to the school</p>
+            </div>
+        </div>
+
+    </t>
+
+    <t t-name="ClickTemplate">
+
+        <div class="jumbotron">
+            <div class="container text-center">
+                <h1>Students Info</h1>
+                <table class="table table-sm table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Roll.no</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="student" t-as="doc">
+                            <tr class="table-info">
+                                <td><t t-esc="doc.roll_no"/></td>
+                                <td><t t-esc="doc.name"/></td>
+                                <td><t t-esc="doc.age"/></td>
+                                <td><t t-esc="doc.gender"/></td>
+                                <td><t t-esc="doc.email"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <h1><t t-esc="student"/></h1>
+                <button type="button" class="btn btn-primary back">Back</button>
+            </div>
+        </div>
+
+    </t>
+
+    <t t-name="Hrattendancenew" t-extend="HrAttendanceMyMainMenu">
+
+        <t t-jquery="h3.mb24" t-operation="after">
+            <div>
+                <h1 class="mb8 h1_edit" t-if='widget.employee.department_id' t-esc="widget.employee.department_id[1]"></h1>
+            </div>
+        </t>
+
+    </t>
+
+
+</template>
+

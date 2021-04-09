@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- User Professor -->
+        <record id="user_professor" model="res.users">
+            <field name="login">Arsene</field>
+            <field name="password">ar</field>
+            <field name="partner_id" ref="school.partner_professor"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(4, ref('base.main_company'))]" name="company_ids"/>
+            <!-- <field eval="[(6,0,[])]" name="groups_id"/>-->
+            <field name="signature">
+                <![CDATA[<span>-- <br/>Arsene</span>]]>
+            </field>
+        </record>
+
+        <!-- Student user record -->
+        <record id="user_student" model="res.users">
+            <field name="login">Aubmeyang</field>
+            <field name="password">au</field>
+            <field name="partner_id" ref="school.partner_student"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(4, ref('base.main_company'))]" name="company_ids"/>
+            <!-- <field eval="[(6,0,[])]" name="groups_id"/>-->
+            <field name="signature">
+                <![CDATA[<span>-- <br/>Auba</span>]]>
+            </field>
+        </record>
+
+        <!-- Principal user record -->
+         <record id="user_principal" model="res.users">
+            <field name="login">Peter</field>
+            <field name="password">pe</field>
+            <field name="partner_id" ref="school.partner_principal"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(4, ref('base.main_company'))]" name="company_ids"/>
+            <!-- <field eval="[(6,0,[])]" name="groups_id"/>-->
+            <field name="signature">
+                <![CDATA[<span>-- <br/>Peter</span>]]>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_saleorder_document">
+            <div class="page">
+                    <div class="oe_structure"/>
+                    <h2 class="mt16">
+                        <center>Sales Orders</center>
+                    </h2>
+                    <br/>
+                    <br/>
+                    <table class="table table-sm o_main_table table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th style="text-align:left">
+                                    <strong>Order No</strong>
+                                </th>
+                                <th style="text-align:left">
+                                    <strong>Order Date</strong>
+                                </th>
+                                <th style="text-align:left">
+                                    <strong>Customer</strong>
+                                </th>
+                                <th style="text-align:left">
+                                    <strong>Untaxed amount</strong>
+                                </th>
+                                <th style="text-align:left">
+                                    <strong>Taxes</strong>
+                                </th>
+                                <th style="text-align:left">
+                                    <strong>Total</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="docs" t-as="doc">
+                                <tr>
+                                    <td class="text-left">
+                                        <span t-esc="doc.name"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-esc="doc.date_order"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-esc="doc.partner_id.name"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-esc="doc.amount_untaxed"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-esc="doc.amount_tax"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-esc="doc.amount_total"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                     <div class="clearfix" name="so_total_summary">
+                            <div id="total" class="row" name="total">
+                                <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                    <table class="table table-sm">
+                                        <tr class="border-black o_subtotal table-active" style="">
+                                            <td name="td_amount_untaxed_label"><strong>Subtotal</strong></td>
+                                            <td name="td_amount_untaxed"
+                                                class="text-right">
+                                                <span t-esc="amount_untaxed"
+                                                t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-black o_total table-active">
+                                            <td name="td_amount_untaxed_label">
+                                                <strong>Tax</strong></td>
+                                            <td name="td_amount_untaxed"
+                                                class="text-right">
+                                                <span t-esc="amount_tax"
+                                                t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-black o_total table-success">
+                                            <td name="td_amount_untaxed_label">
+                                                <strong>Total</strong></td>
+                                            <td name="td_amount_untaxed"
+                                                class="text-right">
+                                                <span t-esc="amount_total"
+                                                t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </template>
+        <template id="report_saleorder">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-call="school.report_saleorder_document"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

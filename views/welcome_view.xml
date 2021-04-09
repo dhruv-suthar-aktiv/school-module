@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Register the welcome action  -->
+    <record id="school_welcome_view_action" model="ir.actions.client">
+        <field name="name">Welcome</field>
+        <field name="tag">welcome_action</field>
+        <field name="target">main</field>
+    </record>
+
+    <menuitem id="menu_school_welcome_view" name="Welcome" action="school_welcome_view_action" />
+</odoo>

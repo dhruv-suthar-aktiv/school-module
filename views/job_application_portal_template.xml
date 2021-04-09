@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="portal_my_home_job_application" inherit_id="portal.portal_my_home" name="My Home: Job Application" priority="70">
+    <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+      <t t-call="portal.portal_docs_entry">
+        <t t-set="title">Job Application</t>
+        <t t-set="url" t-value="'/my/applications'"/>
+        <t t-set="count" t-value="application_count"/>
+      </t>
+    </xpath>
+  </template>
+
+  <template id="portal_my_application" name="Job applications">
+    <t t-call="portal.portal_layout">
+      <t t-set="breadcrumbs_searchbar" t-value="True"/>
+      <t t-call="portal.portal_searchbar">
+        <t t-set="title">Applications</t>
+      </t>
+      <t t-call="portal.portal_table">
+        <thead>
+          <tr class="active">
+            <th class="text-left">Name</th>
+            <th class="text-left">Gender</th>
+            <th class="text-left">Dob</th>
+            <th class="text-left">Email</th>
+            <th class="text-left">Designation</th>
+            <th class="text-left"/>
+          </tr>
+        </thead>
+        <t t-as="application" t-foreach="applications">
+          <tr>
+            <td style="display:none;">
+              <span>
+                <t t-esc="application.id"/>
+              </span>
+            </td>
+            <td>
+              <span>
+                <t t-esc="application.name"/>
+              </span>
+              <!-- <t t-esc="application.name"/> -->
+            </td>
+            <td>
+              <t t-esc="application.gender"/>
+            </td>
+            <td class="text-left">
+              <span t-field="application.dob"/>
+            </td>
+            <td class="text-left">
+              <span t-field="application.email"/>
+            </td>
+            <td class="text-left">
+              <span t-field="application.designation_id"/>
+            </td>
+            <td class="text-left">
+              <a role="button" class="btn btn-primary edit">
+                <i class="fa fa-check"/><t> Edit</t>
+              </a>
+              <!-- <a class="btn btn-sm btn-link" t-attf-href="/edit/#{ slug(application) }" role="button">
+                <i class="fa fa-pencil"/>Edit</a> -->
+            </td>
+          </tr>
+        </t>
+      </t>
+    </t>
+
+    <!-- Job designation edit form using modal popup -->
+
+    <div id="modaleditapp" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-content" >
+            <div class="modal-body" id="pop_html">
+              <br/>
+              <h2 style="text-align:center; font-size 24px; font-weight:bold" class="o_default_snippet_text"> Job Designation </h2>
+              <form action="/updatepopup/" method="POST">
+                <input name="csrf_token" t-att-value="request.csrf_token()" type="hidden"  />
+                <div align="center">
+                    <div class="form-group row form-field o_website_form_required_custom">
+                       <input class="form-control o_website_form_input" type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                     </div>
+                    <div class="form-group row form-field o_website_form_custom o_website_form_required_custom">
+                        <div class="col-lg-3 col-md-4">
+                          <label class="col-form-label" for="name">Name</label>
+                        </div>
+                        <div class="col-lg-7 col-md-8">
+                          <input class="form-control o_website_form_input name" name="name" required="" type="text"/>
+                        </div>
+                    </div>
+                    <div class="form-group row form-field o_website_form_custom">
+                      <div class="col-lg-3 col-md-4">
+                        <label class="col-form-label" for="dob">Date of Birth</label>
+                      </div>
+                      <div class="col-lg-7 col-md-8">
+                        <input class="form-control o_website_form_input dob" name="dob" type="date"/>
+                      </div>
+                    </div>
+                    <div class="form-group row form-field o_website_form_required_custom">
+                        <div class="col-lg-3 col-md-4">
+                          <label class="col-form-label" for="email">Email</label>
+                        </div>
+                        <div class="col-lg-7 col-md-8">
+                          <input class="form-control o_website_form_input email" name="email" required="" type="email"/>
+                        </div>
+                    </div>
+                    <input class="form-control o_website_form_input name" name="application_id" id="application_id" type="hidden"/>
+
+                    <div class="form-group row form-field o_website_form_required_custom">
+                      <div class="col-lg-3 col-md-4">
+                          <label for="gender">Gender</label>
+                      </div>
+                      <div class="col-lg-7 col-md-8">
+                        <select name="gender" id="gender">
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                          <option value="others">Others</option>
+                        </select>
+                      </div>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <div class="col-lg-3 col-md-4">
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                          <button type="submit" class="btn btn-primary pull-left">
+                            Save
+                          </button>
+                        </div>
+                    </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+  </template>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="job_designation_form_view" model="ir.ui.view">
+        <field name="name">job.designation.form.view</field>
+        <field name="model">job.designation</field>
+        <field name="arch" type="xml">
+            <form string="Job Designation">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="position"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Applicants">
+                            <field name="applicants_ids" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="job_designation_tree_view" model="ir.ui.view">
+            <field name="name">job.designation.tree.view</field>
+            <field name="model">job.designation</field>
+            <field name="arch" type="xml">
+                <tree string="Designation">
+                    <field name="position"/>
+                </tree>
+            </field>
+        </record>
+
+    <record id="job_designation_menu_action" model="ir.actions.act_window">
+        <field name="name">Job Designation</field>
+        <field name="res_model">job.designation</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Add Job Designation</p>
+        </field>
+    </record>
+
+    <menuitem action="job_designation_menu_action" id="school_designation_menu" name="Job Designation" parent="school.school_menu"/>
+</odoo>

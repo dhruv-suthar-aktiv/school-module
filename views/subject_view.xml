@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Subject Tree View -->
+        <record id="subject_tree_view" model="ir.ui.view">
+            <field name="name">subject.tree.view</field>
+            <field name="model">subject.subject</field>
+            <field name="arch" type="xml">
+                <tree string="Subject Information">
+                    <field name="name_seq"/>
+                    <field name="name"/>
+                    <field name="testing"/>
+                </tree>
+            </field>
+        </record>
+        <!--Professor Form view -->
+        <record id="subject_form_view" model="ir.ui.view">
+            <field name="name">subject.form.view</field>
+            <field name="model">subject.subject</field>
+            <field name="arch" type="xml">
+                <form string="Subject">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name_seq"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Subject Kanban View-->
+        <record id="Subject_kanban_view" model="ir.ui.view">
+            <field name="name">subject.kanban.view</field>
+            <field name="model">subject.subject</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_partner_kanban">
+                    <field name="name_seq"/>
+                    <field name="name"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="name_seq"/>
+                                    </strong>
+                                    <div t-if="record.name.value">
+                                        <t t-esc="record.name.value"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- Action -->
+        <record id="subject_menu_action" model="ir.actions.act_window">
+            <field name="name">Subject</field>
+            <field name="res_model">subject.subject</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Add Subject</p>
+            </field>
+        </record>
+        <!-- Menu items -->
+        <menuitem action="subject_menu_action" id="school_subject_menu" name="Subject" parent="school.school_menu"/>
+    </data>
+</odoo>

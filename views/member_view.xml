@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Professor Tree View -->
+        <record id="member_tree_view" model="ir.ui.view">
+            <field name="name">member.tree.view</field>
+            <field name="model">member.member</field>
+            <field name="arch" type="xml">
+                <tree string="Memeber Information">
+                    <field name="partner_id"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="lang"/>
+
+                    <!-- <field name="subject_id"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <record id="member_form_view" model="ir.ui.view">
+            <field name="name">member.form.view</field>
+            <field name="model">member.member</field>
+            <field name="arch" type="xml">
+                <form string="Manager">
+                    <header>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                Member
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="email"/>
+                                <field name="phone"/>
+                                <field name="lang"/>
+                                <field name ="birthdate_date"/>
+                                <field name= "age"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="member_menu_action" model="ir.actions.act_window">
+            <field name="name">Member</field>
+            <field name="res_model">member.member</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Add member</p>
+            </field>
+        </record>
+
+        <menuitem action="member_menu_action" id="school_member_menu" name="Member" parent="school.school_menu"/>
+    </data>
+</odoo>

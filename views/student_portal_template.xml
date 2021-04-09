@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+
+    <template id="student_page" name="Welcome page">
+      <t t-call="website.layout">Hello, Welcome to the school
+      </t>
+    </template>
+
+   <!--  <template id="portal_layout" name="Portal layout: Student menu entry" inherit_id="portal.portal_breadcrumbs" priority="60">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li class="breadcrumb-item active">
+                <a href="/my/students">Students</a>
+            </li>
+        </xpath>
+    </template> -->
+
+    <!-- Student table list in portal -->
+
+    <template id="portal_my_home_student" inherit_id="portal.portal_my_home" name="My Home: student_entries" priority="60">
+      <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+        <t t-call="portal.portal_docs_entry">
+          <t t-set="title">Students</t>
+          <t t-set="url" t-value="'/my/students'"/>
+          <t t-set="count" t-value="student_count"/>
+        </t>
+      </xpath>
+    </template>
+
+    <template id="portal_my_students" name="My Students">
+      <t t-call="portal.portal_layout">
+        <t t-set="breadcrumbs_searchbar" t-value="True"/>
+        <t t-call="portal.portal_searchbar">
+          <t t-set="title">Students</t>
+        </t>
+
+        <t t-call="portal.portal_table">
+          <thead>
+            <tr class="active">
+              <th class="text-left">Student ID</th>
+              <th class="text-left">Name</th>
+              <th class="text-left">Age</th>
+              <th class="text-left">gender</th>
+              <th class="text-left"/>
+            </tr>
+          </thead>
+          <t t-as="student" t-foreach="students">
+            <tr>
+              <td>
+                  <t t-esc="student.roll_no"/>
+              </td>
+              <td>
+                  <t t-esc="student.name"/>
+              </td>
+              <td class="text-left">
+                <span t-field="student.age" />
+              </td>
+              <td class="text-left">
+                <span t-field="student.gender"/>
+              </td>
+              <td class="text-left">
+                <a role="button" href="/my/account" class="btn btn-sm btn-link">
+                  <i class="fa fa-pencil"/> Edit
+                </a>
+              </td>
+            </tr>
+          </t>
+        </t>
+      </t>
+    </template>
+
+  <!-- Student form -->
+  <template id="student_form" name="Create student">
+    <t t-call="website.layout">
+      <div id="wrap">
+        <div class="oe_structure">
+          <div class="container ">
+            <form class="container-fluid mt32" role="form">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row form-group">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                    <label class="col-lg-3 col-md-4 col-form-label o_website_form_custom" for="name">Name </label>
+                    <div class="col-lg-7 col-md-4">
+                      <input class="name o_website_form_input" name="name" type="text"/>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <label class="col-lg-3 col-md-4 col-form-label o_website_form_custom" for="dob">Dob</label>
+                    <div class="col-lg-7 col-md-4">
+                      <input class="dob o_website_form_input" name="student_dob" type="date"/>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <label class="col-lg-3 col-md-4 col-form-label" for="age">Age </label>
+                    <div class="col-lg-7 col-md-4">
+                      <input class="age" name="age" type="text"/>
+                    </div>
+                  </div>
+                  <div class="col-md-6"/>
+                  <div class="row form-group">
+                    <div class="col-lg-3 col-md-4">
+                      <label for="gender">Gender</label>
+                    </div>
+                    <div class="col-lg-7 col-md-8">
+                      <select name="gender" id="gender">
+                        <option value="">---Select Gender---</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="others">Others</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
+                    <button class="btn btn-primary pull-right submit-student">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </t>
+  </template>
+
+
+
+  </data>
+</odoo>

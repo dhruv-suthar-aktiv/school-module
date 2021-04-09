@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- inherited customer age  -->
+    <record id="view_move_form_inherit" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//header//button[@name='preview_invoice']" position="after">
+                <button name="action_send_email" string="Send Reminder Email" type="object"/>
+            </xpath>
+            <xpath expr="//form/sheet//field[@name='invoice_date']" position="after">
+                <field name="invoice_date_due" required="True"/>
+            </xpath>
+            <xpath expr="//form/sheet//field[@name='invoice_date_due']" position="attributes">
+                <attribute name="attrs">{'invisible': [
+                            ('state', '=', 'draft')]}</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

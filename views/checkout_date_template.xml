@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="edit_product_checkout" inherit_id="website_sale.cart_lines">
+            <xpath expr="//table//thead//tr//th[@class='text-center td-action']" position="after">
+                <th class="text-center td-date">Date</th>
+            </xpath>
+            <xpath expr="//table//tbody//td[@class='td-action']" position="after">
+                <td class="text-center tobechanged" name="date">
+                    <span t-esc="date" style="white-space: nowrap;"/>
+                </td>
+            </xpath>
+        </template>
+    </data>
+</odoo>
+
+
+
+
+

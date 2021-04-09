@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template xml:space="preserve">
+     <t t-name="SalesReportDashboard">
+
+        <div class="jumbotron text-center">
+            <div class="container text-center">
+                <h1>Dashboard</h1>
+                <a class="fa fa-7x button_clickable fa-sign-in btn-secondary" aria-label="Sign in" title="Sign in"/>
+                <h3 class="mt0 mb0 text-muted">Click to
+                    <b>view sales Report</b>
+                </h3>
+                <p>Welcome to the Dashboard</p>
+            </div>
+        </div>
+
+    </t>
+    <t t-name="SalesReportDashboard2">
+         <div class="container my-5">
+                <center><h1>Last Month Sale Report</h1></center>
+            <div class="row my-4">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center">Confirmed Sale Order</th>
+                            <th class="text-center">Total Sale</th>
+                            <th class="text-center">Total Paid Invoices</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody-light">
+                        <tr>
+                            <td class="text-center"><t t-esc="result.no_confirmed_orders"/></td>
+                            <td class="text-center"><t t-esc="result.amount_total"/></td>
+                            <td class="text-center"><t t-esc="result.invoice_paid_count"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-sm table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Qty</th>
+                            <th>Uom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="result.product_list" t-as="doc">
+                            <tr>
+                                <td><t t-esc="doc"/></td>
+                                <td><t t-esc="doc.qty"/></td>
+                                <td><t t-esc="doc.uom"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+
+                <!-- <h1><t t-esc="result"/></h1> -->
+                <!-- <h2><t t-esc="result.qty"/></h2> -->
+
+
+            </div>
+        </div>
+    </t>
+</template>

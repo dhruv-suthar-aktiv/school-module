@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="job_application_form_view" model="ir.ui.view">
+        <field name="name">job.application.form.view</field>
+        <field name="model">job.application</field>
+        <field name="arch" type="xml">
+            <form string="Job Applicantions">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="gender"/>
+                            <field name="dob"/>
+                            <field name="email"/>
+                            <field name="designation_id" widget="selection" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="job_application_tree_view" model="ir.ui.view">
+            <field name="name">job.application.tree.view</field>
+            <field name="model">job.application</field>
+            <field name="arch" type="xml">
+                <tree string="Applicantions">
+                    <field name="name"/>
+                    <field name="gender"/>
+                    <field name="dob"/>
+                    <field name="email"/>
+                    <field name="designation_id"/>
+                </tree>
+            </field>
+        </record>
+
+    <record id="job_application_menu_action" model="ir.actions.act_window">
+        <field name="name">Job Applications</field>
+        <field name="res_model">job.application</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Apply Here</p>
+        </field>
+    </record>
+
+    <menuitem action="job_application_menu_action" id="school_applicartion_menu" name="Job Applicantions" parent="school.school_menu"/>
+</odoo>

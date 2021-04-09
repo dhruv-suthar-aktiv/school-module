@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="assign_extra_classes_form" model="ir.ui.view">
+        <field name="name">assign.extra.classes.wizard</field>
+        <field name="model">extra.classes</field>
+        <field name="arch" type="xml">
+            <form string="Assign Class">
+                <group>
+                    <field name="professor_id"  />
+                    <field name="subject_id"/>
+                    <field name="subject_code"/>
+                    <field name="class_date"/>
+                </group>
+                <footer>
+                    <button class="btn-primary" name="assign_class" string="Assign" type="object"/>
+                    <button class="btn-secondary" special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="assign_extra_classes_wizards" model="ir.actions.act_window">
+        <field name="name">Assign Extra class</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">extra.classes</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="assign_extra_classes_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

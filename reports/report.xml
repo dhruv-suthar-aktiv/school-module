@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <report
+        id="report_ir_model_overview"
+        string="Professor Details"
+        model="professor.professor"
+        report_type="qweb-pdf"
+        name="school.report_professor"
+        file="school.report_professor"/>
+
+    <report
+            id="action_report_saleorder"
+            string="Orders"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="school.report_saleorder"
+            name="school.report_saleorder"
+        />
+
+    <report
+            id="action_report_wizard_saleorder"
+            string="Wizard Orders"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="school.report_saleorder_wizard"
+            name="school.report_saleorder_wizard"
+        />
+
+
+</odoo>
+

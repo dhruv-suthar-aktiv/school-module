@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_saleorder_wizard_document">
+            <div class="page">
+                    <div class="oe_structure"/>
+                    <h2 class="mt16">
+                        <center>Sale Orders</center>
+                        <!-- <t t-as="doc" t-foreach="docs"><t t-if="not (env.context.get('proforma', False) or is_pro_forma)"><span t-if="doc.state not in ['draft','sent']">Order # </span><span t-if="doc.state in ['draft','sent']">Quotation # </span></t><t t-if="env.context.get('proforma', False) or is_pro_forma"><span>Pro-Forma Invoice # </span></t><span t-field="doc.name"/></t>-->
+                    </h2>
+                    <br/>
+                    <br/>
+                    <table class="table table-sm o_main_table table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th style="text-align:left">
+                                    <strong>Order No</strong>
+                                </th>
+                                <th style="text-align:left">
+                                    <strong>Order Date</strong>
+                                </th>
+                                <th style="text-align:left">
+                                    <strong>Customer</strong>
+                                </th>
+                                <th style="text-align:left">
+                                    <strong>Invoice Status</strong>
+                                </th>
+                                <th style="text-align:left">
+                                    <strong>Status</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="order_list" t-as="doc">
+                                <tr class="table-info">
+                                    <td class="text-left">
+                                        <span t-esc="doc['name']"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-esc="doc['date_order']"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-esc="doc['partner_id']"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-esc="doc['invoice']"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-esc="doc['state']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+        </template>
+        <template id="report_saleorder_wizard">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-call="school.report_saleorder_wizard_document"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

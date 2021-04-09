@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+     <record id="menu_job_designation" model="website.menu">
+        <field name="name">Job Designation</field>
+        <field name="url">/designation/</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">10</field>
+     </record>
+
+     <record id="menu_student_record" model="website.menu">
+        <field name="name">Student </field>
+        <field name="url">/student</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">6</field>
+    </record>
+</odoo>
